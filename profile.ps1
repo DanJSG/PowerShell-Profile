@@ -8,5 +8,18 @@ Function Stop-ProcessOnPort($Port) {
 	}
 }
 
+Function New-Password($Length) {
+	if($Length -lt 1) {
+		Write-Error "Length must be a positive integer.";
+		return;
+	}
+	$pwd = "";
+	$alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!&*@#?%";
+	for($i = 0; $i -lt $Length; $i++) {
+		$pwd += $alpha[(Get-Random) % ($alpha.Length + 1)];
+	}
+	return $pwd;
+}
+
 Write-Output "Global profile.ps1 script running from $PsHome.`n";
 Set-Location D:\Documents\GitHub\

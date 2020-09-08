@@ -21,5 +21,10 @@ Function New-Password($Length) {
 	return $pwd;
 }
 
+# Modify the line below to set your default terminal directory.
+# Set-Location E:\GitHub\
+
+# Modify the line below to enable Git for Powershell.
+# Import-Module posh-git
+
 Write-Output "Global profile.ps1 script running from $PsHome.`n";
-Set-Location D:\Documents\GitHub\

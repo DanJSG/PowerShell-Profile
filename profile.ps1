@@ -9,16 +9,20 @@ Function Stop-ProcessOnPort($Port) {
 }
 
 Function New-Password($Length) {
-	if($Length -lt 1) {
+	if ($Length -lt 1) {
 		Write-Error "Length must be a positive integer.";
 		return;
 	}
-	$pwd = "";
+	$password = "";
 	$alpha = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!&*@#?%";
-	for($i = 0; $i -lt $Length; $i++) {
-		$pwd += $alpha[(Get-Random) % ($alpha.Length + 1)];
+	for ($i = 0; $i -lt $Length; $i++) {
+		$password += $alpha[(Get-Random) % ($alpha.Length + 1)];
 	}
-	return $pwd;
+	return $password;
+}
+
+Function Convert-Mp4ToGif($VideoFile, $OutputFileName) {
+	ffmpeg -i $VideoFile -vf "fps=30" -loop 0 "${OutputFileName}.gif"
 }
 
 # Modify the line below to set your default terminal directory.
